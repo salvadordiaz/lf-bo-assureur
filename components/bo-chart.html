@@ -1,0 +1,39 @@
+<script src="../bower_components/chartjs/Chart.js"></script>
+
+<polymer-element name="bo-chart" attributes="width height labels">
+  <template>
+    <style>
+    </style>
+    <div class="bo-char" layout vertical center>
+      <content select="h2" flex></content>
+      <canvas id="chartCanvas" width="{{width}}" height="{{height}}"></canvas>
+    </div>
+  </template>
+  <script>
+  
+  Polymer({
+    ready: function() {
+      var data = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [
+        {
+          label: "Dataset",
+          fillColor: "rgba(220,220,220,0.2)",
+          strokeColor: "rgba(220,220,220,1)",
+          pointColor: "rgba(220,220,220,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(220,220,220,1)",
+          data: [65, 59, 80, 81, 56, 55, 40]
+        }
+        ]
+        };
+      var ctx =this.$.chartCanvas.getContext("2d");
+      var boChart = new Chart(ctx).Line(data, {
+        bezierCurve: false
+      });
+    }
+  });
+  </script>
+</polymer-element>
+

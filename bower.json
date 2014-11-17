@@ -1,0 +1,27 @@
+{
+  "name": "lf-bo-assureur",
+  "version": "0.0.1",
+  "description": "BackOffice Assureur LesFurets.com",
+  "main": "index.html",
+  "moduleType": [
+    "node"
+  ],
+  "authors": [
+    "bde"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.1",
+    "core-elements": "Polymer/core-elements#~0.5.1",
+    "paper-elements": "Polymer/paper-elements#~0.5.1",
+    "chartjs": "~0.2.0"
+  }
+}
