@@ -1,6 +1,6 @@
 <script src="../bower_components/chartjs/Chart.js"></script>
 
-<polymer-element name="bo-chart" attributes="width height labels">
+<polymer-element name="bo-chart" attributes="width height labels data">
   <template>
     <style>
     </style>
@@ -14,7 +14,7 @@
   Polymer({
     ready: function() {
       var data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: JSON.parse(this.labels),
         datasets: [
         {
           label: "Dataset",
@@ -24,7 +24,7 @@
           pointStrokeColor: "#fff",
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(220,220,220,1)",
-          data: [65, 59, 80, 81, 56, 55, 40]
+          data: JSON.parse(this.data)
         }
         ]
         };

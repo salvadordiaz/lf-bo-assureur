@@ -8,17 +8,19 @@
 
   <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
   <link rel="import" href="bower_components/font-roboto/roboto.html">
-  <link rel="import" href="/bower_components/core-icons/core-icons.html">
+  <link rel="import" href="bower_components/core-icons/core-icons.html">
   <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
   <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+  <link rel="import" href="bower_components/core-pages/core-pages.html">
   <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
   <link rel="import" href="components/bo-header.html">
   <link rel="import" href="components/bo-chart.html">
 
   <style>
   html,body {
+    width: 1024px;
     height: 100%;
-    margin: 0;
+    margin: 0 auto;
     font-family: 'RobotoDraft', sans-serif;
   }
   core-header-panel {
@@ -46,11 +48,17 @@
   #tabs paper-tab::shadow #ink {
     color: #ffba68;
   }
-  #chart {
+  #pages {
     width: 100%;
   }
+  #pages bo-chart {
+    width: 100%;
+  }
+  #pages h2 {
+    text-align: center;
+  }
   .container {
-    width: 80%;
+    width: 100%;
     margin: 20px auto;
   }
   </style>
@@ -60,24 +68,56 @@
   <bo-header><h1>BACKOFFICE ASSUREUR</h1></bo-header>
   <core-header-panel>
     <core-toolbar>
-      <paper-tabs id="tabs" selected="home" self-end>
-        <paper-tab name="home"><core-icon icon="home"></core-icon></paper-tab>
-        <paper-tab name="quotes">Quotes</paper-tab>
-        <paper-tab name="qleads">Qleads</paper-tab>
-        <paper-tab name="sales">Sales</paper-tab>
-        <paper-tab name="score">Score</paper-tab>
-        <paper-tab name="integration">Integration</paper-tab>
+      <paper-tabs id="tabs" selected="0" self-end>
+        <paper-tab><core-icon icon="home"></core-icon></paper-tab>
+        <paper-tab>Quotes</paper-tab>
+        <paper-tab>Qleads</paper-tab>
+        <paper-tab>Sales</paper-tab>
+        <paper-tab>Score</paper-tab>
+        <paper-tab>Integration</paper-tab>
       </paper-tabs>
     </core-toolbar>
-    <div class="container" layout vertical center>
+    <div class="container" layout horizontal center>
+      <core-pages id="pages" selected="0">
+        <div id="home-page">
+          <h2>Home</h2>
+        </div>
+        <div id="quotes-page">
+          <bo-chart id="qotes-chart" width="320" height="240"
+          labels='["January", "February", "March", "April", "May", "June", "July"]'
+          data='[65, 59, 80, 81, 56, 55, 40]'>
+            <h2>Quotes</h2>
+          </bo-chart>
+        </div>
+        <div id="qleads-page">
+          <bo-chart id="qleads-chart" width="320" height="240"
+          labels='["January", "February", "March", "April", "May", "June", "July"]'
+          data='[65, 59, 80, 81, 56, 55, 40]'>
+            <h2>Qleads</h2>
+          </bo-chart>
+        </div>
+        <div id="sales-page">
+          <bo-chart id="sales-chart" width="320" height="240"
+          labels='["January", "February", "March", "April", "May", "June", "July"]'
+          data='[65, 59, 80, 81, 56, 55, 40]'>
+            <h2>Sales</h2>
+          </bo-chart>
+        </div>
+        <div id="score-page">
+          <h2>Score</h2>
+        </div>
+        <div id="integration-page">
+          <h2>Integration</h2>
+        </div>
+      </core-pages>
     </div>
-    <bo-chart id="chart" width="320" height="240"
-    labels="['January', 'February', 'March', 'April', 'May', 'June', 'July']">
-    <h2>Quotes</h2>
-    </bo-chart>
   </core-header-panel>
   <script>
   var tabs = document.querySelector('paper-tabs');
+  var pages = document.querySelector('core-pages');
+  tabs.addEventListener('core-select', function() {
+    pages.selected = tabs.selected;
+  });
   </script>
 </body>
 
