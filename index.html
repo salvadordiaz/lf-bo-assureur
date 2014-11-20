@@ -5,7 +5,6 @@
   <title>BackOffice Assureur | LesFurets.com</title>
 
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-
   <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
   <link rel="import" href="bower_components/font-roboto/roboto.html">
   <link rel="import" href="bower_components/core-icons/core-icons.html">
@@ -15,8 +14,12 @@
   <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
   <link rel="import" href="components/bo-header.html">
   <link rel="import" href="components/bo-chart.html">
+  <link rel="import" href="components/bo-weather.html">
 
   <style>
+  * {
+    box-sizing: border-box;
+  }
   html,body {
     width: 1024px;
     height: 100%;
@@ -61,6 +64,9 @@
     width: 100%;
     margin: 20px auto;
   }
+  #weather {
+    margin: 10%;
+  }
   </style>
 </head>
 
@@ -81,6 +87,9 @@
       <core-pages id="pages" selected="0">
         <div id="home-page">
           <h2>Home</h2>
+          <!-- <paper-shadow z="1"> -->
+            <bo-weather id="weather" />
+          <!-- </bo-weather> -->
         </div>
         <div id="quotes-page">
           <bo-chart id="qotes-chart" width="320" height="240"
